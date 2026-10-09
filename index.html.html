@@ -1,0 +1,519 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thomas Perucho | Développeur en formation</title>
+<meta name="description" content="Portfolio de Thomas Perucho, étudiant en BTS SIO option SLAM. Découvrez son CV, son parcours et sa candidature.">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+:root{
+  --bg:#080d19;
+  --panel:#10192b;
+  --panel2:#131f34;
+  --white:#f5f7ff;
+  --muted:#9ba9c1;
+  --blue:#37a5ff;
+  --cyan:#26e5e8;
+  --purple:#9c70ff;
+  --border:rgba(160,184,225,.14);
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:95px}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--white);line-height:1.7}
+a{color:inherit;text-decoration:none}
+button{font:inherit}
+.container{width:min(1120px,90%);margin:auto}
+section{padding:100px 0}
+::selection{background:var(--purple);color:white}
+
+/* Navigation */
+
+header{
+  position:sticky;top:0;z-index:100;
+  background:rgba(8,13,25,.88);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--border)
+}
+nav{height:78px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{font-family:'Space Grotesk',sans-serif;font-size:21px;font-weight:700;letter-spacing:-.7px}
+.logo span{color:var(--cyan)}
+.links{display:flex;align-items:center;gap:30px;list-style:none}
+.links a{font-size:13px;color:#b9c5da;transition:.2s}
+.links a:hover{color:var(--cyan)}
+.links .nav-cta{color:white;background:linear-gradient(110deg,#168cf5,#8054ff);padding:11px 17px;border-radius:9px}
+.menu{display:none;background:none;border:0;color:white;font-size:27px;cursor:pointer}
+
+/* Hero */
+
+.hero{padding:105px 0 95px;position:relative;overflow:hidden}
+.hero:before{
+  content:"";position:absolute;width:500px;height:500px;right:-200px;top:-150px;
+  background:#3267ff;filter:blur(180px);opacity:.19;pointer-events:none
+}
+.hero:after{
+  content:"";position:absolute;width:350px;height:350px;left:-250px;bottom:-160px;
+  background:#00d8dc;filter:blur(150px);opacity:.12;pointer-events:none
+}
+.hero-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:70px;align-items:center;position:relative;z-index:1}
+.eyebrow{display:flex;align-items:center;gap:10px;color:var(--cyan);font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase}
+.pulse{height:8px;width:8px;border-radius:50%;background:var(--cyan);box-shadow:0 0 15px var(--cyan)}
+h1,h2,h3{font-family:'Space Grotesk',sans-serif}
+h1{font-size:clamp(48px,7vw,82px);line-height:1.03;letter-spacing:-4px;margin:24px 0}
+h1 span{display:block;background:linear-gradient(100deg,#36b9ff 5%,#8c75ff 60%,#d28aff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero-subtitle{font-size:20px;font-weight:600;margin-bottom:20px}
+.hero-subtitle em{font-style:normal;color:#8da1bf}
+.hero-text{max-width:560px;color:var(--muted);font-size:15px;line-height:1.9}
+.buttons{display:flex;gap:13px;flex-wrap:wrap;margin-top:30px}
+.btn{display:inline-flex;justify-content:center;align-items:center;gap:10px;padding:13px 19px;border-radius:10px;font-size:13px;font-weight:700;border:1px solid transparent;cursor:pointer;transition:transform .25s,border-color .25s}
+.btn:hover{transform:translateY(-3px)}
+.primary{background:linear-gradient(110deg,#168cf5,#7957ff);color:white;box-shadow:0 8px 30px #315dff2b}
+.secondary{border-color:var(--border);background:#ffffff06;color:#e5edff}
+.secondary:hover{border-color:#6e91dc}
+.arrow{font-size:17px}
+
+/* Carte profil */
+
+.profile{
+  background:linear-gradient(150deg,#17253c,#0d1525);
+  border:1px solid #2b3d5a;border-radius:24px;padding:29px;
+  box-shadow:0 25px 80px #00000030;position:relative;overflow:hidden
+}
+.profile:before{content:"";position:absolute;right:-70px;top:-100px;width:230px;height:230px;background:#684aff;filter:blur(90px);opacity:.2}
+.profile-top{display:flex;align-items:center;gap:17px;position:relative}
+.avatar{
+  width:65px;height:65px;border-radius:18px;
+  display:grid;place-items:center;font-size:29px;
+  background:linear-gradient(135deg,#0ec9e4,#386aff,#994fff);
+  box-shadow:0 5px 25px #328eff25
+}
+.profile h2{font-size:20px}
+.profile-top p{color:var(--muted);font-size:12px}
+.profile-status{margin:25px 0;padding:12px;background:#ffffff06;border:1px solid var(--border);border-radius:10px;font-size:12px;color:#c8d6ec}
+.profile-status span{color:var(--cyan);font-weight:700}
+.profile-line{display:flex;justify-content:space-between;gap:15px;padding:12px 0;border-bottom:1px solid var(--border);font-size:12px}
+.profile-line:last-child{border-bottom:0}
+.profile-line span:first-child{color:var(--muted)}
+.profile-line strong{text-align:right;font-weight:600}
+
+/* Bandeau */
+
+.stats{border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:#ffffff03}
+.stats-grid{display:grid;grid-template-columns:repeat(3,1fr)}
+.stat{text-align:center;padding:25px 12px;border-right:1px solid var(--border)}
+.stat:last-child{border:0}
+.stat strong{display:block;font-family:'Space Grotesk',sans-serif;font-size:19px}
+.stat span{font-size:12px;color:var(--muted)}
+
+/* Titres et cartes */
+
+.section-head{max-width:650px;margin-bottom:45px}
+.section-head.center{text-align:center;margin-left:auto;margin-right:auto}
+.section-head .eyebrow{margin-bottom:15px}
+.section-head h2{font-size:clamp(31px,4vw,45px);letter-spacing:-1.7px;line-height:1.2;margin-bottom:15px}
+.section-head p{font-size:14px;color:var(--muted)}
+.accent{color:var(--cyan)}
+.skills{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{background:linear-gradient(145deg,#121e32,#0d1525);border:1px solid var(--border);border-radius:16px;padding:26px;transition:.3s}
+.card:hover{transform:translateY(-5px);border-color:#417cbd66;box-shadow:0 15px 45px #00000018}
+.card-icon{width:47px;height:47px;display:grid;place-items:center;border-radius:13px;background:#1b3150;color:var(--cyan);font-size:23px;margin-bottom:21px}
+.card h3{font-size:17px;margin-bottom:10px}
+.card p,.card li{font-size:13px;color:var(--muted)}
+.card ul{list-style:none;margin-top:12px}
+.card li{padding:4px 0}
+.card li:before{content:"↗";color:var(--cyan);margin-right:9px}
+
+/* Parcours */
+
+.timeline{display:grid;gap:15px}
+.timeline-item{display:grid;grid-template-columns:165px 1fr;gap:25px;padding:25px;background:var(--panel);border:1px solid var(--border);border-radius:15px}
+.date{color:var(--cyan);font-size:12px;font-weight:700;padding-top:4px}
+.timeline-item h3{font-size:18px;margin-bottom:5px}
+.timeline-item p{font-size:13px;color:var(--muted)}
+.timeline-item ul{margin:12px 0 0 18px;color:var(--muted);font-size:13px}
+.timeline-item li{padding:2px 0}
+.small-label{display:inline-block;margin-top:10px;color:#c7b5ff;background:#9c70ff13;border:1px solid #9c70ff30;padding:4px 9px;border-radius:5px;font-size:10px;font-weight:700}
+
+/* Documents */
+
+.documents-section{background:linear-gradient(180deg,#0a1120,#0d1525);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.docs{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+.doc{padding:30px;border-radius:18px;background:linear-gradient(150deg,#17243a,#10192b);border:1px solid var(--border)}
+.doc-icon{height:55px;width:55px;display:grid;place-items:center;background:#243653;border-radius:15px;font-size:25px;margin-bottom:24px}
+.doc-label{font-size:10px;letter-spacing:2px;color:var(--cyan);font-weight:700}
+.doc h3{font-size:23px;margin:10px 0}
+.doc p{color:var(--muted);font-size:13px;margin-bottom:23px}
+.doc .btn{width:100%}
+
+/* Lettre */
+
+.letter-wrap{background:#f3f6fc;color:#17243a;border-radius:14px;padding:clamp(23px,5vw,55px);box-shadow:0 20px 70px #00000020}
+.letter-head{padding-bottom:20px;border-bottom:2px solid #168cf5;margin-bottom:24px}
+.letter-head h3{font-size:25px}
+.letter-head p,.letter-meta{font-size:12px;color:#5d6b80}
+.letter-meta{margin-bottom:25px}
+.letter-meta p{margin:3px 0}
+.letter-body p{font-size:13px;line-height:1.9;text-align:justify;margin-bottom:16px;color:#34445b}
+.signature{font-weight:700;margin-top:24px}
+.letter-tools{display:flex;gap:12px;justify-content:center;margin-top:22px;flex-wrap:wrap}
+
+/* Contact */
+
+.contact-card{
+  text-align:center;padding:65px 30px;border-radius:22px;
+  border:1px solid #293858;
+  background:radial-gradient(ellipse at 50% 0%,#273b6b 0%,transparent 65%),#10192b
+}
+.contact-card .section-head{margin:0 auto 25px}
+.contact-card .section-head h2{margin-top:15px}
+.contact-card .section-head p{max-width:500px;margin:auto}
+.contact-links{display:flex;justify-content:center;flex-wrap:wrap;gap:12px}
+footer{border-top:1px solid var(--border);padding:25px 0;color:var(--muted);font-size:11px}
+.footer-inner{display:flex;justify-content:space-between;gap:15px}
+
+/* Mobile */
+
+@media(max-width:850px){
+  .hero-grid{grid-template-columns:1fr;gap:40px}
+  .profile{max-width:550px}
+  .skills{grid-template-columns:repeat(2,1fr)}
+  .links{gap:14px}
+  .links a{font-size:11px}
+}
+@media(max-width:600px){
+  section{padding:70px 0}
+  nav{height:70px}
+  .menu{display:block}
+  .links{display:none;position:absolute;top:70px;left:0;right:0;padding:20px 5%;background:#0b1322;border-bottom:1px solid var(--border);flex-direction:column;align-items:stretch}
+  .links.open{display:flex}
+  .links a{font-size:14px;display:block;padding:7px}
+  h1{letter-spacing:-2px}
+  .hero{padding:70px 0}
+  .skills,.docs{grid-template-columns:1fr}
+  .timeline-item{grid-template-columns:1fr;gap:8px}
+  .stat strong{font-size:15px}
+  .stat span{font-size:10px}
+  .buttons .btn{width:100%}
+  .footer-inner{flex-direction:column;text-align:center}
+  .letter-body p{text-align:left}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{transition:none!important}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <nav class="container">
+    <a href="#accueil" class="logo">THOMAS<span>.</span>PERUCHO</a>
+    <button class="menu" id="menu" aria-label="Ouvrir le menu" aria-expanded="false">☰</button>
+    <ul class="links" id="links">
+      <li><a href="#accueil">Accueil</a></li>
+      <li><a href="#competences">Compétences</a></li>
+      <li><a href="#parcours">Parcours</a></li>
+      <li><a href="#documents">Documents</a></li>
+      <li><a href="#contact" class="nav-cta">Me contacter ↗</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+
+<section class="hero" id="accueil">
+  <div class="container hero-grid">
+    <div>
+      <div class="eyebrow"><span class="pulse"></span> Portfolio personnel · 2026</div>
+      <h1>Thomas <span>Perucho.</span></h1>
+      <div class="hero-subtitle">Étudiant en BTS SIO <em>· Option SLAM</em></div>
+      <p class="hero-text">
+        Je m'intéresse au développement informatique, à la programmation
+        et à la conception de solutions logicielles. À travers mon parcours,
+        je souhaite approfondir mes connaissances, développer mes compétences
+        techniques et participer à des projets concrets.
+      </p>
+      <div class="buttons">
+        <a href="#documents" class="btn primary">Découvrir mon profil <span class="arrow">↗</span></a>
+        <a href="#parcours" class="btn secondary">Mon parcours ↓</a>
+      </div>
+    </div>
+
+    <aside class="profile">
+      <div class="profile-top">
+        <div class="avatar">TP</div>
+        <div>
+          <h2>Thomas Perucho</h2>
+          <p>Développement & informatique</p>
+        </div>
+      </div>
+      <div class="profile-status">Formation actuelle : <span>BTS SIO SLAM</span></div>
+      <div class="profile-line"><span>Établissement</span><strong>Lycée Saint Marc</strong></div>
+      <div class="profile-line"><span>Langages</span><strong>SQL · Python</strong></div>
+      <div class="profile-line"><span>Outils</span><strong>LibreOffice · XMind</strong></div>
+      <div class="profile-line"><span>Centres d'intérêt</span><strong>Jeux vidéo · Sport · Musique</strong></div>
+    </aside>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="container stats-grid">
+    <div class="stat"><strong>BTS SIO</strong><span>Option SLAM</span></div>
+    <div class="stat"><strong>Informatique</strong><span>Un domaine qui m'intéresse</span></div>
+    <div class="stat"><strong>Progression</strong><span>Apprendre et développer</span></div>
+  </div>
+</div>
+
+<section id="competences">
+  <div class="container">
+    <div class="section-head center">
+      <div class="eyebrow">01 / Mes compétences</div>
+      <h2>Un profil tourné vers <span class="accent">le numérique.</span></h2>
+      <p>Les connaissances et les outils que je développe dans le cadre de ma formation et de mes projets personnels.</p>
+    </div>
+
+    <div class="skills">
+      <article class="card">
+        <div class="card-icon">&lt;/&gt;</div>
+        <h3>Langages informatiques</h3>
+        <p>Premières compétences en programmation et manipulation de données.</p>
+        <ul><li>SQL</li><li>Python</li></ul>
+      </article>
+      <article class="card">
+        <div class="card-icon">▣</div>
+        <h3>Logiciels</h3>
+        <p>Utilisation d'outils pour organiser le travail et structurer les idées.</p>
+        <ul><li>LibreOffice</li><li>XMind</li></ul>
+      </article>
+      <article class="card">
+        <div class="card-icon">⌘</div>
+        <h3>Informatique pratique</h3>
+        <p>Intérêt pour le fonctionnement des ordinateurs et les technologies.</p>
+        <ul><li>Démontage et remontage PC</li><li>Veille informatique</li><li>Projet personnel</li></ul>
+      </article>
+      <article class="card">
+        <div class="card-icon">◎</div>
+        <h3>Langues</h3>
+        <p>Compétences linguistiques indiquées dans mon CV.</p>
+        <ul><li>Anglais : B1</li><li>Espagnol : B1</li></ul>
+      </article>
+      <article class="card">
+        <div class="card-icon">↗</div>
+        <h3>Qualités professionnelles</h3>
+        <p>Des qualités développées dans mes expériences et mes travaux.</p>
+        <ul><li>Autonomie</li><li>Organisation</li><li>Esprit d'équipe</li><li>Adaptabilité</li></ul>
+      </article>
+      <article class="card">
+        <div class="card-icon">✳</div>
+        <h3>Centres d'intérêt</h3>
+        <p>Mes activités et intérêts en dehors de la formation.</p>
+        <ul><li>Jeux vidéo</li><li>Sport</li><li>Musique</li></ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="parcours">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">02 / Mon parcours</div>
+      <h2>Formation & expériences.</h2>
+      <p>Les étapes de mon parcours scolaire et les expériences présentées dans mon CV.</p>
+    </div>
+
+    <div class="timeline">
+      <article class="timeline-item">
+        <div class="date">2025 — 2026</div>
+        <div>
+          <h3>Baccalauréat</h3>
+          <p>Lycée Léonard de Vinci</p>
+          <span class="small-label">FORMATION</span>
+        </div>
+      </article>
+
+      <article class="timeline-item">
+        <div class="date">2026 — 2028</div>
+        <div>
+          <h3>BTS Services Informatiques aux Organisations</h3>
+          <p>Lycée Saint Marc · Option Solutions Logicielles et Applications Métiers (SLAM)</p>
+          <span class="small-label">FORMATION ACTUELLE</span>
+        </div>
+      </article>
+
+      <article class="timeline-item">
+        <div class="date">Octobre 2022</div>
+        <div>
+          <h3>École primaire des Marronniers</h3>
+          <p>Expérience mentionnée dans mon CV.</p>
+          <ul><li>Gestion des élèves</li><li>Autonomie</li><li>Gestion des imprévus</li></ul>
+        </div>
+      </article>
+
+      <article class="timeline-item">
+        <div class="date">Novembre 2022</div>
+        <div>
+          <h3>Gendarmerie de Bourgoin-Jallieu</h3>
+          <p>Stage de découverte en brigade.</p>
+          <ul><li>Organisation et observation</li><li>Découverte du matériel</li><li>Travail d'équipe</li></ul>
+        </div>
+      </article>
+
+      <article class="timeline-item">
+        <div class="date">2026 — 2027</div>
+        <div>
+          <h3>Projet collectif BTS SIO</h3>
+          <p>Projet de mini-entreprise et vente de montres.</p>
+          <ul><li>Association et financement</li><li>Organisation du projet</li><li>Collaboration en équipe</li></ul>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="documents-section" id="documents">
+  <div class="container">
+    <div class="section-head center">
+      <div class="eyebrow">03 / Mes documents</div>
+      <h2>Mon profil professionnel.</h2>
+      <p>Consultez mon parcours et ma candidature depuis un espace clair et soigné.</p>
+    </div>
+
+    <div class="docs">
+      <article class="doc">
+        <div class="doc-icon">▤</div>
+        <div class="doc-label">DOCUMENT 01 · CURRICULUM VITÆ</div>
+        <h3>Mon CV</h3>
+        <p>Formation, compétences, expériences, langues et centres d'intérêt.</p>
+        <button class="btn primary" onclick="window.print()">Imprimer / Enregistrer en PDF ↗</button>
+      </article>
+
+      <article class="doc">
+        <div class="doc-icon">✉</div>
+        <div class="doc-label">DOCUMENT 02 · CANDIDATURE</div>
+        <h3>Ma lettre de motivation</h3>
+        <p>Ma formation, mes qualités, mon expérience et mon intérêt pour un stage.</p>
+        <a href="#lettre" class="btn secondary">Lire la lettre de motivation ↗</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="lettre">
+  <div class="container">
+    <div class="section-head center">
+      <div class="eyebrow">04 / Ma candidature</div>
+      <h2>Lettre de motivation.</h2>
+      <p>Une présentation de ma candidature pour un stage en informatique.</p>
+    </div>
+
+    <article class="letter-wrap">
+      <div class="letter-head">
+        <h3>Thomas Perucho</h3>
+        <p>Étudiant en BTS SIO · Option SLAM</p>
+        <p>06 10 40 63 39 · thomas9.perucho@gmail.com</p>
+        <p>115 rue de Commerce, 38070 Saint-Quentin-Fallavier</p>
+      </div>
+
+      <div class="letter-meta">
+        <p><strong>À l'attention de :</strong> Pge Informatique</p>
+        <p>564 rue de la République, 38290 La Verpillière</p>
+        <p style="margin-top:12px">Saint-Quentin-Fallavier, le 20 octobre 2026</p>
+        <p style="margin-top:12px"><strong>Objet : Candidature pour un stage</strong></p>
+      </div>
+
+      <div class="letter-body">
+        <p>Madame, Monsieur,</p>
+
+        <p>
+          Actuellement étudiant en BTS Services Informatiques aux Organisations (SIO),
+          option Solutions Logicielles et Applications Métiers (SLAM) au Lycée Saint Marc,
+          je me permets de vous adresser ma candidature pour un stage au sein de votre
+          entreprise. Votre structure m'intéresse particulièrement pour son domaine
+          d'activité, ses projets et sa réputation. Je souhaite aujourd'hui mettre
+          mes compétences à votre service.
+        </p>
+
+        <p>
+          Au cours de ma formation, j'ai développé des connaissances en programmation,
+          en analyse et conception d'applications, ainsi qu'en gestion de bases de données.
+          J'ai également effectué un stage au sein d'un commissariat de police, une
+          expérience qui m'a permis de renforcer ma rigueur, ma capacité d'adaptation
+          et le respect de la confidentialité des informations. Je suis quelqu'un de
+          curieux, organisé et à l'écoute, avec un bon esprit d'équipe. J'ai parfois
+          tendance à vouloir approfondir un sujet plus que nécessaire, un point sur
+          lequel je travaille en apprenant à mieux gérer mon temps et mes priorités.
+        </p>
+
+        <p>
+          Je suis convaincu que ma motivation, ma rigueur et mes compétences techniques
+          seraient un véritable atout pour votre entreprise. Mon parcours m'a appris
+          à m'investir pleinement dans chaque mission qui m'est confiée. Je saurai
+          mettre cette énergie au service de vos projets, en apportant sérieux,
+          autonomie et esprit d'équipe. Je reste à votre disposition pour un entretien
+          qui me permettrait de vous exposer plus en détail ma motivation et mon profil.
+        </p>
+
+        <p>Je vous prie d'agréer, Madame, Monsieur, l'expression de mes salutations distinguées.</p>
+        <p class="signature">Thomas Perucho</p>
+      </div>
+
+      <div class="letter-tools">
+        <button class="btn primary" onclick="window.print()">Imprimer / Enregistrer en PDF</button>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <div class="contact-card">
+      <div class="section-head">
+        <div class="eyebrow" style="justify-content:center">05 / Contact</div>
+        <h2>Construisons la suite <span class="accent">ensemble.</span></h2>
+        <p>Pour échanger sur mon profil, mon parcours ou ma candidature pour un stage, n'hésitez pas à me contacter.</p>
+      </div>
+      <div class="contact-links">
+        <a class="btn primary" href="mailto:thomas9.perucho@gmail.com">✉ Envoyer un e-mail</a>
+        <a class="btn secondary" href="tel:+33610406339">☎ 06 10 40 63 39</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <span>THOMAS PERUCHO <span class="accent">/</span> PORTFOLIO</span>
+    <span>© <span id="year"></span> · BTS SIO SLAM</span>
+  </div>
+</footer>
+
+<script>
+const menu = document.getElementById('menu');
+const links = document.getElementById('links');
+
+menu.addEventListener('click', () => {
+  const open = links.classList.toggle('open');
+  menu.setAttribute('aria-expanded', open);
+  menu.textContent = open ? '✕' : '☰';
+});
+
+links.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    links.classList.remove('open');
+    menu.setAttribute('aria-expanded', 'false');
+    menu.textContent = '☰';
+  });
+});
+
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
